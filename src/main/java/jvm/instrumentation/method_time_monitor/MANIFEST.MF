@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Premain-Class: jvm.instrumentation.method_time_monitor.TimeMonitorAgent
+Can-Retransform-Classes: true
+Can-Redefine-Classes: true
