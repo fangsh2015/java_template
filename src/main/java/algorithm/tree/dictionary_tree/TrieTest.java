@@ -5,6 +5,7 @@ import org.junit.Test;
 
 /**
  * Created by Niki on 2020/8/6 12:45
+ * @see{@link:https://blog.csdn.net/Together_CZ/article/details/74078655}
  */
 public class TrieTest {
     /**
