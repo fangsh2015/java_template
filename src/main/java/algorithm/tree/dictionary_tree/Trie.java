@@ -29,6 +29,12 @@ public class Trie {
     private TrieNode root;
 
 
+    public Trie() {
+        this.numNode=0;
+        this.depth=0;
+        this.root = new TrieNode();
+    }
+
     private class TrieNode {
         /**
          * 所有子节点，或者一级自及诶单
@@ -168,5 +174,52 @@ public class Trie {
             }
         }
         return node.numPass;
+    }
+
+    /**
+     * 查找当前字符串的数量
+     * @param str
+     * @return
+     */
+    public int countStr(String str) {
+        if (!isStrOfLetter(str)) {
+            return 0;
+        }
+
+        final char[] letters = toCharArr(str);
+        TrieNode node = this.root;
+        for (char c : letters) {
+            int pos = c - 'a';
+            if (node.son[pos] != null) {
+                node = node.son[pos];
+            }else {
+                return 0;
+            }
+        }
+        if (node.isEnd) {
+            return node.numEnd;
+        }
+        return 0;
+    }
+
+    /**
+     * 返回根节点，根节点不存值
+     */
+    public TrieNode getRoot() {
+        return this.root;
+    }
+
+    /**
+     * 返回字典树的深度
+     */
+    public int getDept() {
+        return this.depth;
+    }
+
+    /**
+     * 返回字典树的所有子节点的数目(不包含子节点)
+     */
+    public int getNumNode() {
+        return this.numNode;
     }
 }
