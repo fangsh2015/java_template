@@ -1,6 +1,5 @@
 package pool.sftp;
 
-import com.fenqile.tql.business.global.sftp.vo.SFTPProperties;
 import com.jcraft.jsch.ChannelSftp;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
