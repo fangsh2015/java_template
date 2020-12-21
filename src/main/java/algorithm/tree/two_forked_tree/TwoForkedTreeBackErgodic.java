@@ -2,6 +2,7 @@ package algorithm.tree.two_forked_tree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 二叉树后序遍历
@@ -29,5 +30,25 @@ public class TwoForkedTreeBackErgodic {
         backErgodic(root.getLeft(), nodes);
         backErgodic(root.getRight(), nodes);
         nodes.add(root.getValue());
+    }
+
+    /**
+     * 使用栈来解决后续遍历
+     */
+    class Solution {
+        public List<Integer> postorderTraversal(Node root) {
+            List<Integer> res = new ArrayList();
+            if(root == null){
+                return res;
+            }
+
+            Node p = root ;
+            Stack<Node> stack = new Stack<>();
+
+            while(!stack.isEmpty() || p != null){
+
+            }
+            return res;
+        }
     }
 }

@@ -1,10 +1,9 @@
 package pool.sftp;
 
-import com.fenqile.tql.business.global.sftp.vo.SFTPProperties;
 import com.jcraft.jsch.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.springframework.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,12 +24,12 @@ public class SFTPOperationHelper {
     public static ChannelSftp login(SFTPProperties properties) {
         try {
             JSch jsch = new JSch();
-            if (StringUtils.hasText(properties.getPrivateKey())) {
+            if (StringUtils.isNotEmpty(properties.getPrivateKey())) {
                 // 设置私钥
                 jsch.addIdentity("idname", properties.getPrivateKey().getBytes(), null, null);
             }
             Session sshSession = jsch.getSession(properties.getUsername(), properties.getHost(), properties.getPort());
-            if (StringUtils.hasText(properties.getPassword())) {
+            if (StringUtils.isNotEmpty(properties.getPassword())) {
                 sshSession.setPassword(properties.getPassword());
             }
             Properties sshConfig = new Properties();
@@ -60,7 +59,7 @@ public class SFTPOperationHelper {
             sftp.cd(dir);
             return sftp.get(name);
         } catch (SftpException e) {
-            log.error("SFTP下载文件={}{}异常", dir, name, e);
+//            log.error("SFTP下载文件={}{}异常", dir, name, e);
         }
         return null;
     }
@@ -71,7 +70,7 @@ public class SFTPOperationHelper {
             InputStream inputStream = sftp.get(name);
             return IOUtils.toByteArray(inputStream);
         } catch (SftpException | IOException e) {
-            log.error("SFTP下载文件={}{}异常", dir, name, e);
+//            log.error("SFTP下载文件={}{}异常", dir, name, e);
         }
         return null;
     }

@@ -1,9 +1,8 @@
 package algorithm.tree.two_forked_tree;
 
-import com.sun.tools.internal.ws.wsdl.document.Output;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 二叉树先序遍历
@@ -15,7 +14,6 @@ public class TwoForkedTreePreErgodic {
         Node root = Node.createTree();
         List<Node> nodes = new ArrayList<>();
         preErgodic(root, nodes);
-//        nodes.stream().forEach(s -> System.out.println(s));
         nodes.stream().forEach(System.out::println);
     }
 
@@ -30,5 +28,23 @@ public class TwoForkedTreePreErgodic {
         nodes.add(root);
         preErgodic(root.getLeft(), nodes);
         preErgodic(root.getRight(),nodes);
+    }
+
+    /**
+     * 先序遍历解决方案
+     */
+    class Solution {
+        public List<Integer> preTraversal(Node root) {
+            List<Integer> res = new ArrayList();
+            if (root == null) {
+                return res;
+            }
+            Node p = root;
+            Stack<Node> stack = new Stack<>();
+            while (!stack.isEmpty() || p != null) {
+
+            }
+            return res;
+        }
     }
 }
